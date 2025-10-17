@@ -271,3 +271,12 @@ popupContainer.forEach((el, i) => {
     el.style.display = "none";
   });
 });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    popupContainer.forEach(container => {
+      if (container.style.display === "block") {
+        container.style.display = "none";
+      }
+    });
+  }
+});
