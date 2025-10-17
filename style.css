@@ -227,18 +227,17 @@ input {
 /* wordList */
 .wordList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
   justify-content: center;
   align-items: stretch;      /* ensure items in the same row get equal height */
   grid-auto-rows: 1fr;       /* make each row's tracks share height equally */
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 .wordList div {
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   border-right: 1px var(--cl-black) solid;
   border-left: 1px var(--cl-black) solid;
 }
