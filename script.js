@@ -3,6 +3,7 @@
 const allWords = {
   english: english,
   spanish: spanish,
+  spanish_numbers: spanish_numbers
 };
 const chooseLvl = document.querySelector(".choose-buttons");
 const chooseAmount = document.querySelector(".choose-amount");
