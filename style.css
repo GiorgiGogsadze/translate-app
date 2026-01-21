@@ -58,11 +58,23 @@ h3 {
   color: var(--cl-black);
 }
 p {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--cl-black);
 }
 input {
-  font-family: Helvetica, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Helvetica,
+    sans-serif;
+  font-size: 16px; /* prevents iOS zoom */
+  line-height: normal;
+  padding: 12px 14px;
+  height: auto;
+  letter-spacing: normal;
+  transform: none;
+  -webkit-text-size-adjust: 100%;
 }
 /* header */
 .header {
@@ -239,7 +251,7 @@ input {
 /* wordList */
 .wordList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+  grid-template-columns: repeat(auto-fit, 45rem);
   justify-content: center;
   align-items: stretch; /* ensure items in the same row get equal height */
   grid-auto-rows: 1fr; /* make each row's tracks share height equally */
@@ -277,14 +289,14 @@ input {
   border: #fada5e 1px solid;
   background: linear-gradient(
     -45deg,
-    #ffffffcc 0%,
-    #ffffffcc 25%,
-    #00ffffcc 25%,
-    #00ffffcc 50%,
-    #00ff00cc 50%,
-    #00ff00cc 75%,
-    #ff0000cc 75%,
-    #ff0000cc 100%
+    #bbb 0%,
+    #bbb 25%,
+    #fff 25%,
+    #fff 50%,
+    #00be00cc 50%,
+    #00be00cc 75%,
+    #a70000cc 75%,
+    #a70000cc 100%
   );
   background-size: 500%;
   background-position: right;
@@ -293,11 +305,11 @@ input {
 }
 .wrong-input {
   background-position: left;
-  color: #fff;
+  color: #000;
 }
 .correct-input {
   background-position: 35% 0;
-  color: #fff;
+  color: #000;
 }
 .user-answer:focus {
   transition: all 0.5s;
