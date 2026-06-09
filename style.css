@@ -251,7 +251,7 @@ input {
 /* wordList */
 .wordList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 45rem);
+  grid-template-columns: repeat(auto-fit, 100rem);
   justify-content: center;
   align-items: stretch; /* ensure items in the same row get equal height */
   grid-auto-rows: 1fr; /* make each row's tracks share height equally */
@@ -265,14 +265,15 @@ input {
   padding: 1rem 2rem;
   border-right: 1px var(--cl-black) solid;
   border-left: 1px var(--cl-black) solid;
+  width: 100%;
 }
 .wordList div p {
-  width: 10rem;
+  width: 50%;
   text-align: end;
   margin-right: 1rem;
 }
 .user-answer {
-  width: 15rem;
+  width: 40%;
   margin-right: 1rem;
 }
 .answer {
@@ -329,10 +330,10 @@ input {
   color: #fff;
   cursor: pointer;
   font-family: system-ui, "Segoe UI", "Helvetica Neue", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   outline: none;
   overflow: hidden;
-  width: 2.5rem;
+  width: 3rem;
   padding: 0.5rem;
   text-align: center;
   transition:

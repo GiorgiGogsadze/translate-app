@@ -1,4 +1,4 @@
-const spanish = [
+const spanish_a1 = [
   ["la mujer", "the woman, the wife"],
   ["el", "the (masculine article)"],
   ["un", "a (masculine), one"],

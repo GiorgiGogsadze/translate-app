@@ -1,14 +1,17 @@
 "use strict";
 
 const allWords = {
-  english: english,
-  spanish: spanish,
-  spanish_numbers: spanish_numbers
+  english_c1: english_c1,
+  english_phrasals: english_phrasals,
+  english_idioms: english_idioms,
+  spanish_a1: spanish_a1,
+  spanish_numbers: spanish_numbers,
 };
+
 const chooseLvl = document.querySelector(".choose-buttons");
 const chooseAmount = document.querySelector(".choose-amount");
 const chooseAmountSelection = document.querySelector(
-  ".choose-amount-selection"
+  ".choose-amount-selection",
 );
 const finalBtns = document.querySelector(".final-buttons");
 const currentSelectionText = document.querySelector(".chosen-level");
@@ -54,7 +57,7 @@ const orderWords = function (x) {
         <input type="text" spellcheck="false" class="user-answer" />
         <button class="show-letter">0</button>
         <p class="answer"></p>
-      </div>`
+      </div>`,
   );
 };
 
@@ -100,12 +103,12 @@ chooseLvl.addEventListener("click", function (e) {
   for (let i = 50; i < starterArr.length; i += 50) {
     chooseAmountSelection.insertAdjacentHTML(
       "beforeend",
-      `<option value="${i}">${i}</option>`
+      `<option value="${i}">${i}</option>`,
     );
   }
   chooseAmountSelection.insertAdjacentHTML(
     "beforeend",
-    `<option value="${starterArr.length}">${starterArr.length}</option>`
+    `<option value="${starterArr.length}">${starterArr.length}</option>`,
   );
   chooseAmountSelection.selectedIndex = -1;
 });
@@ -119,7 +122,7 @@ chooseAmountSelection.addEventListener("change", function (e) {
     finalBtns.insertAdjacentHTML(
       "beforeend",
       // `<button class="fin-btn" data-n = "${i}">${curLvl} ${i}</button>`
-      `<button class="fin-btn" role="button" data-n = "${i}"><span class="text">${curLvl} ${i}</span></button>`
+      `<button class="fin-btn" role="button" data-n = "${i}"><span class="text">${curLvl} ${i}</span></button>`,
     );
   }
 });
@@ -137,7 +140,7 @@ finalBtns.addEventListener("click", function (e) {
       ? number * amountWords
       : starterArr.length;
   const shouldRenderArr = starterArr.filter(
-    (el, i) => i >= startPoint && i < endPoint
+    (el, i) => i >= startPoint && i < endPoint,
   );
   renderWords(shouldRenderArr);
   currentSelectionText.style.display = "block";
@@ -191,10 +194,9 @@ const showHelp = function (e) {
     if (el === e.target && chosenLvl[i][0].length > +e.target.textContent) {
       document
         .querySelectorAll(".answer")
-        [i].insertAdjacentHTML(
-          "beforeend",
-          [...chosenLvl[i][0]][+e.target.textContent]
-        );
+        [
+          i
+        ].insertAdjacentHTML("beforeend", [...chosenLvl[i][0]][+e.target.textContent]);
       helpneeded++;
       e.target.textContent = +e.target.textContent + 1;
     }
@@ -274,7 +276,7 @@ popupContainer.forEach((el, i) => {
 });
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
-    popupContainer.forEach(container => {
+    popupContainer.forEach((container) => {
       if (container.style.display === "block") {
         container.style.display = "none";
       }
