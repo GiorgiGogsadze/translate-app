@@ -5,6 +5,7 @@ const allWords = {
   english_phrasals: english_phrasals,
   english_idioms: english_idioms,
   spanish_a1: spanish_a1,
+  spanish_a2_1: spanish_a2_1,
   spanish_numbers: spanish_numbers,
 };
 
