@@ -114,7 +114,6 @@ chooseLvl.addEventListener("click", function (e) {
   chooseAmountSelection.selectedIndex = -1;
 });
 chooseAmountSelection.addEventListener("change", function (e) {
-  console.log("hey");
   amountWords = +e.target.value;
   const amountBtns = Math.ceil(starterArr.length / amountWords);
   finalBtns.style.display = "";

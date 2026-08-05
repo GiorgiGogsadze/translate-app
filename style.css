@@ -290,14 +290,14 @@ input {
   border: #fada5e 1px solid;
   background: linear-gradient(
     -45deg,
-    #bbb 0%,
-    #bbb 25%,
+    #ddd 0%,
+    #ddd 25%,
     #fff 25%,
     #fff 50%,
-    #00be00cc 50%,
-    #00be00cc 75%,
-    #a70000cc 75%,
-    #a70000cc 100%
+    #6fff68cc 50%,
+    #6fff68cc 75%,
+    #ff3939cc 75%,
+    #ff3939cc 100%
   );
   background-size: 500%;
   background-position: right;
