@@ -499,3 +499,52 @@ input {
 .iscore::first-letter {
   color: #fbdc65;
 }
+
+.play-word {
+  width: 3.6rem;
+  height: 3.6rem;
+  flex: 0 0 3.6rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 1.2rem;
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: linear-gradient(145deg, #6617cb, #405cf5);
+  color: #fff;
+
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  box-shadow: 0 0.4rem #3b2a91;
+  transition: all 0.15s ease;
+}
+
+.play-word:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.6rem #3b2a91;
+}
+
+.play-word:active {
+  transform: translateY(0.25rem);
+  box-shadow: 0 0.15rem #3b2a91;
+}
+
+.play-word:disabled {
+  cursor: default;
+  opacity: 0.35;
+  filter: grayscale(1);
+  transform: none;
+  box-shadow: 0 0.2rem #3b2a91;
+}
+
+.play-word:disabled:hover {
+  transform: none;
+  filter: grayscale(1);
+  box-shadow: 0 0.2rem #3b2a91;
+}

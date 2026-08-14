@@ -1,6 +1,7 @@
 "use strict";
 
 const allWords = {
+  english_gen: english_gen,
   english_c1: english_c1,
   english_phrasals: english_phrasals,
   english_idioms: english_idioms,
@@ -8,6 +9,8 @@ const allWords = {
   spanish_a2_1: spanish_a2_1,
   spanish_numbers: spanish_numbers,
 };
+
+const hasAudio = [...english_gen.map((pair) => pair[0])];
 
 const chooseLvl = document.querySelector(".choose-buttons");
 const chooseAmount = document.querySelector(".choose-amount");
@@ -32,7 +35,7 @@ const infoContainer = document.querySelector(".info-container");
 
 // /////////////////////////////////////////////////////////////////////////////
 function shuffle(array) {
-  return array; // if you don't want to randomize
+  //return array; // if you don't want to randomize
   let currentIndex = array.length;
   let randomIndex;
 
@@ -54,6 +57,11 @@ const orderWords = function (x) {
   wordList.insertAdjacentHTML(
     "beforeend",
     `<div>
+        ${
+          hasAudio.includes(x[0])
+            ? `<button class="play-word" data-word="${x[0]}" type="button" disabled>🔊</button>`
+            : ""
+        }
         <p class="georgian">${x[1]}</p>
         <input type="text" spellcheck="false" class="user-answer" />
         <button class="show-letter">0</button>
@@ -61,6 +69,17 @@ const orderWords = function (x) {
       </div>`,
   );
 };
+
+const playAudio = function (word) {
+  const audio = new Audio(`audios/${word}.mp3`);
+  audio.play();
+};
+
+wordList.addEventListener("click", (e) => {
+  const btn = e.target.closest(".play-word");
+  if (!btn) return;
+  playAudio(btn.dataset.word);
+});
 
 const renderWords = function (arr) {
   shuffle(arr);
@@ -171,6 +190,12 @@ wordList.addEventListener("keyup", (e) => {
           document.querySelectorAll(".answer")[i].textContent = chosenLvl[i][0];
           el.classList.add("wrong-input");
         }
+        const play_word_btns = document.querySelectorAll(".play-word");
+        if (play_word_btns.length !== 0) {
+          play_word_btns[i].disabled = false;
+          playAudio(chosenLvl[i][0]); // NEW: auto-play on single check
+        }
+
         if (
           document.querySelectorAll(".wrong").length +
             document.querySelectorAll(".correct").length ===
@@ -207,6 +232,9 @@ wordList.addEventListener("click", showHelp);
 check.addEventListener("click", (e) => {
   userAnswer.forEach((el, i) => {
     el.disabled = true;
+  });
+  document.querySelectorAll(".play-word").forEach((el) => {
+    el.disabled = false;
   });
   wordList.removeEventListener("click", showHelp);
   document.querySelectorAll(".answer").forEach((el, i) => {
