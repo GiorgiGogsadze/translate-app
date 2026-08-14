@@ -25,7 +25,7 @@
   </head>
   <body>
     <div class="header">
-      <h1>Learn Foreign Languages</h1>
+      <h1 onclick="location.reload()">Learn Foreign Languages</h1>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512 512"
@@ -41,28 +41,14 @@
         />
       </svg>
       <div class="dark-mode">
-        <div class="dark-mode__btn" data-dark="false"></div>
+        <div class="dark-mode__btn"></div>
       </div>
     </div>
     <div class="choose">
       <h2>Choose Language</h2>
-      <div class="choose-buttons">
-        <button class="lvl-btn" data-arr="english_gen">English General</button>
-        <button class="lvl-btn" data-arr="english_c1">English C1</button>
-        <button class="lvl-btn" data-arr="english_phrasals">
-          English Phrasals
-        </button>
-        <button class="lvl-btn" data-arr="english_idioms">
-          English Idioms
-        </button>
-        <button class="lvl-btn" data-arr="spanish_a1">Spanish A1</button>
-        <button class="lvl-btn" data-arr="spanish_a2_1">Spanish A2 1</button>
-        <button class="lvl-btn" data-arr="spanish_numbers">
-          Spanish Numbers
-        </button>
-      </div>
+      <div class="choose-buttons"></div>
       <div class="choose-amount" style="display: none">
-        <label for="amount">choose number of words:</label>
+        <label for="amount">Number of words:</label>
         <select
           name="amount"
           id="amount"

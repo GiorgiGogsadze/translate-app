@@ -6,10 +6,13 @@
   padding: 0;
   box-sizing: inherit;
 }
+
 :root {
   --cl-white: #fff;
   --cl-black: #000;
+  --bg-color: #f0f2f5;
 }
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;
@@ -29,17 +32,28 @@ html {
     font-size: 40%;
   }
 }
+
 body {
   font-family: Helvetica, sans-serif;
-  background-color: #f0f2f5;
-  transition: background-color 1s;
+  background-color: var(--bg-color);
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
 }
+
+body.dark-mode-active {
+  --cl-white: #18191a;
+  --cl-black: #fff;
+  --bg-color: #18191a;
+}
+
 h1 {
   font-family: "Courgette", "cursive", "Open Sans", sans-serif;
   font-size: 3.5rem;
   font-weight: 200;
   color: #fbdc65;
   margin-left: auto;
+  cursor: pointer;
 }
 h2 {
   font-size: 2rem;
@@ -92,25 +106,78 @@ input {
   margin-left: 2rem;
 }
 .dark-mode {
-  width: 5.2rem;
-  height: 3rem;
-  background-color: var(--cl-white);
+  width: 5.6rem;
+  height: 3.2rem;
+
+  background: #fbdc65;
   border-radius: 100rem;
+
   position: relative;
   margin: 0 2rem 0 auto;
-  transition: all 1s;
-}
-.dark-mode__btn {
+
   cursor: pointer;
-  background-color: var(--cl-black);
-  height: 2.6rem;
-  width: 2.6rem;
-  border-radius: 100%;
-  position: absolute;
-  top: 0.2rem;
-  left: 0.2rem;
-  transition: all 1s;
+
+  box-shadow:
+    inset 0 0.2rem 0.4rem rgba(0, 0, 0, 0.15),
+    0 0.2rem 0.5rem rgba(0, 0, 0, 0.15);
+
+  transition:
+    background 0.4s ease,
+    box-shadow 0.4s ease;
 }
+
+.dark-mode__btn {
+  width: 2.6rem;
+  height: 2.6rem;
+
+  position: absolute;
+  top: 0.3rem;
+  left: 0.3rem;
+
+  border-radius: 50%;
+  border: none;
+
+  background: #fff;
+
+  cursor: pointer;
+
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.25);
+
+  transition:
+    left 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55),
+    background 0.4s ease;
+}
+
+/* moon/sun icon */
+.dark-mode__btn::before {
+  content: "☀";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 1.5rem;
+  transition: transform 0.4s ease;
+}
+
+/* dark mode */
+body.dark-mode-active .dark-mode {
+  background: #303f9f;
+}
+
+body.dark-mode-active .dark-mode__btn {
+  left: 2.7rem;
+  background: #18191a;
+}
+
+body.dark-mode-active .dark-mode__btn::before {
+  content: "☾";
+  color: #fbdc65;
+  transform: rotate(-20deg);
+}
+
 .choose {
   display: flex;
   flex-wrap: wrap;
@@ -168,19 +235,86 @@ input {
 }
 /* choose-amount */
 .choose-amount {
-  margin: 1rem 1rem 1rem 0;
   display: flex;
   align-items: center;
+  gap: 1rem;
+
+  margin: 1.5rem 1rem 1.5rem 0;
+  padding: 0.8rem 1.2rem;
+
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(102, 23, 203, 0.15);
+  border-radius: 1rem;
+
+  box-shadow:
+    0 0.4rem 1rem rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(0.5rem);
 }
+
 .choose-amount label {
   font-size: 1.5rem;
+  font-weight: 600;
   color: var(--cl-black);
-  margin-right: 1rem;
+  white-space: nowrap;
 }
+
 .choose-amount-selection {
+  appearance: none;
+  -webkit-appearance: none;
+
+  min-width: 7rem;
+  padding: 0.7rem 3rem 0.7rem 1.1rem;
+
+  border: 2px solid #6617cb;
+  border-radius: 0.7rem;
+
+  background:
+    linear-gradient(45deg, transparent 50%, #6617cb 50%) calc(100% - 1.3rem)
+      50% / 0.6rem 0.6rem no-repeat,
+    linear-gradient(135deg, #6617cb 50%, transparent 50%) calc(100% - 0.9rem)
+      50% / 0.6rem 0.6rem no-repeat,
+    #fff;
+
+  color: #6617cb;
+  font-family: system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  cursor: pointer;
   outline: none;
-  padding: 0.3rem 0.5rem;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
+
+.choose-amount-selection:hover {
+  transform: translateY(-0.1rem);
+  border-color: #cb218e;
+  box-shadow: 0 0.4rem 1rem rgba(102, 23, 203, 0.2);
+}
+
+.choose-amount-selection:focus {
+  border-color: #405cf5;
+  box-shadow:
+    0 0 0 0.3rem rgba(64, 92, 245, 0.15),
+    0 0.4rem 1rem rgba(64, 92, 245, 0.15);
+}
+
+.choose-amount-selection:active {
+  transform: translateY(0.1rem);
+}
+
+.choose-amount-selection option {
+  background: #fff;
+  color: #000;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 /* final button */
 .final-buttons {
   display: flex;

@@ -510,21 +510,18 @@ const p22 = [
     "repair something, often quickly and not very well; become friends with someone again after a disagreement; give basic medical treatment to someone who is injured",
   ],
   ["pick up", "improve  "],
-  [
-    "run down",
-    "if an organisation or area is run down, its size, importance and activity is reduced run-down (adj)",
-  ],
+  ["run down", "size, importance and activity is reduced"],
   [
     "scrape through",
     "succeed in doing something, but not in a very impressive way",
   ],
   [
     "smarten up",
-    "improve the appearance of something, for example by cleaning or painting it; if you smarten up or smarten yourself up, you make yourself look tidy and clean",
+    "improve the appearance of something, for example by cleaning or painting it; make someone look tidy and clean",
   ],
   [
     "stand out",
-    "be much more impressive or important than others; be easy to see or notice because of being different outstanding (adj)",
+    "be much more impressive or important than others; be easy to see or notice because of being different",
   ],
   ["touch up", "make a surface look better with small improvements  "],
   [
@@ -544,7 +541,7 @@ const p24 = [
   ],
   [
     "break up",
-    "if two people break up, they end their relationship; break something to make smaller pieces; if a meeting or other event breaks up, or if you break it up, it ends and people leave",
+    "end relationship; break something to make smaller pieces; event ends and people leave",
   ],
   [
     "bring out",
@@ -566,7 +563,7 @@ const p24 = [
   ],
   [
     "go together",
-    "if two or more things go together, they frequently exist together; if two things go together, they seem good, natural or attractive in combination with each other  ",
+    "frequently exist together; seem good, natural or attractive in combination with each other",
   ],
   [
     "meet up",
@@ -591,13 +588,10 @@ const p24 = [
   ],
 ];
 const p26 = [
-  [
-    "centre around",
-    "if something centres around someone or something, or you centre something around them, they are its main subject of attention or interest",
-  ],
+  ["centre around", "be main subject of attention or interest"],
   [
     "get into",
-    "start enjoying something or become enthusiastic about it; if a train, plane, etc gets into a place, it arrives there; become involved in a bad situation",
+    "start enjoying something or become enthusiastic about it; arrive there; become involved in a bad situation",
   ],
   [
     "go in for",
@@ -605,12 +599,9 @@ const p26 = [
   ],
   [
     "go off",
-    "stop liking someone or something; explode or be fired; leave a place, especially for a particular purpose; if food or drink goes off, it is no longer fresh",
+    "stop liking someone or something; explode or be fired; leave a place, especially for a particular purpose; no longer fresh",
   ],
-  [
-    "grow on",
-    "if something or someone grows on you, you start to like them more",
-  ],
+  ["grow on", "start to like something more"],
   [
     "hang out",
     "spend time in a particular place or with particular people; lean out of a window so that the top part of your body is outside",
@@ -650,4 +641,18 @@ const p26 = [
     "prepare for a sport or activity by doing gentle exercises or practising just before it starts",
   ],
 ];
-const english_phrasals = [...p20];
+const english_phrasals = [
+  ...p2,
+  ...p4,
+  ...p6,
+  ...p8,
+  ...p10,
+  ...p12,
+  ...p14,
+  ...p16,
+  ...p18,
+  ...p20,
+  ...p22,
+  ...p24,
+  ...p26,
+];

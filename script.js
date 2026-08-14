@@ -1,16 +1,31 @@
 "use strict";
 
-const allWords = {
-  english_gen: english_gen,
-  english_c1: english_c1,
-  english_phrasals: english_phrasals,
-  english_idioms: english_idioms,
-  spanish_a1: spanish_a1,
-  spanish_a2_1: spanish_a2_1,
-  spanish_numbers: spanish_numbers,
-};
+const wordSections = [
+  {
+    label: "english_gen",
+    data: english_gen,
+    name: "English General",
+    audio: true,
+  },
+  { label: "english_c1", data: english_c1, name: "English C1" },
+  {
+    label: "english_phrasals",
+    data: english_phrasals,
+    name: "English Phrasals",
+  },
+  { label: "english_idioms", data: english_idioms, name: "English Idioms" },
+  { label: "spanish_a1", data: spanish_a1, name: "Spanish A1" },
+  { label: "spanish_a2_1", data: spanish_a2_1, name: "Spanish A2 1" },
+  { label: "spanish_numbers", data: spanish_numbers, name: "Spanish Numbers" },
+];
 
-const hasAudio = [...english_gen.map((pair) => pair[0])];
+const allWords = wordSections.reduce((acc, el) => {
+  return { ...acc, [el.label]: el.data };
+}, {});
+
+const hasAudio = wordSections
+  .filter((section) => section.audio)
+  .flatMap((section) => section.data.map((pair) => pair[0]));
 
 const chooseLvl = document.querySelector(".choose-buttons");
 const chooseAmount = document.querySelector(".choose-amount");
@@ -26,7 +41,7 @@ let userAnswer;
 const check = document.querySelector(".check");
 const next = document.querySelector(".next");
 const info = document.querySelector(".info-popup__content");
-const darkModeBtn = document.querySelector(".dark-mode__btn");
+const darkMode = document.querySelector(".dark-mode");
 const instructionBtn = document.querySelector(".instruction");
 const instructionContainer = document.querySelector(".instruction-container");
 const closePopup = document.querySelectorAll(".close-popup");
@@ -34,8 +49,15 @@ const popupContainer = document.querySelectorAll(".popup-container");
 const infoContainer = document.querySelector(".info-container");
 
 // /////////////////////////////////////////////////////////////////////////////
+wordSections.forEach((el) => {
+  chooseLvl.insertAdjacentHTML(
+    "beforeend",
+    `<button class="lvl-btn" data-arr=${el.label}>${el.name}</button>`,
+  );
+});
+
 function shuffle(array) {
-  //return array; // if you don't want to randomize
+  return array; // if you don't want to randomize
   let currentIndex = array.length;
   let randomIndex;
 
@@ -53,13 +75,13 @@ function shuffle(array) {
   return array;
 }
 
-const orderWords = function (x) {
+const orderWords = function (x, i) {
   wordList.insertAdjacentHTML(
     "beforeend",
     `<div>
         ${
           hasAudio.includes(x[0])
-            ? `<button class="play-word" data-word="${x[0]}" type="button" disabled>🔊</button>`
+            ? `<button class="play-word" data-word="${x[0]}" data-index="${i}" type="button" disabled>🔊</button>`
             : ""
         }
         <p class="georgian">${x[1]}</p>
@@ -91,8 +113,8 @@ const renderWords = function (arr) {
   [...info.children].forEach((el, i) => {
     el.textContent = "";
   });
-  arr.forEach((el) => {
-    orderWords(el);
+  arr.forEach((el, i) => {
+    orderWords(el, i);
   });
   chosenLvl = arr;
   userAnswer = document.querySelectorAll(".user-answer");
@@ -190,9 +212,12 @@ wordList.addEventListener("keyup", (e) => {
           document.querySelectorAll(".answer")[i].textContent = chosenLvl[i][0];
           el.classList.add("wrong-input");
         }
-        const play_word_btns = document.querySelectorAll(".play-word");
-        if (play_word_btns.length !== 0) {
-          play_word_btns[i].disabled = false;
+
+        const play_word_btn = document.querySelector(
+          `.play-word[data-index="${i}"]`,
+        );
+        if (play_word_btn) {
+          play_word_btn.disabled = false;
           playAudio(chosenLvl[i][0]); // NEW: auto-play on single check
         }
 
@@ -271,23 +296,11 @@ next.addEventListener("click", function () {
   renderWords(wrongsArr);
   next.style.display = "";
 });
-darkModeBtn.addEventListener("click", (e) => {
-  const root = document.querySelector(":root");
-  const body = document.querySelector("body");
-  if (e.target.dataset.dark === "false") {
-    e.target.style.left = "2.4rem";
-    e.target.dataset.dark = "true";
-    root.style.setProperty("--cl-white", "#000");
-    root.style.setProperty("--cl-black", "#fff");
-    body.style.backgroundColor = "#18191a";
-  } else {
-    e.target.style.left = "0.2rem";
-    e.target.dataset.dark = "false";
-    root.style.setProperty("--cl-white", "#fff");
-    root.style.setProperty("--cl-black", "#000");
-    body.style.backgroundColor = "#f0f2f5";
-  }
+
+darkMode.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode-active");
 });
+
 instructionBtn.addEventListener("click", () => {
   instructionContainer.style.display = "block";
 });
