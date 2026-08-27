@@ -75,7 +75,8 @@ p {
   font-size: 2rem;
   color: var(--cl-black);
 }
-input {
+input,
+textarea {
   font-family:
     system-ui,
     -apple-system,
@@ -406,20 +407,13 @@ body.dark-mode-active .dark-mode__btn::before {
   text-align: end;
   margin-right: 1rem;
 }
+
 .user-answer {
   width: 40%;
+  min-height: 1.5rem;
+  resize: none;
   margin-right: 1rem;
-}
-.answer {
-  text-align: start !important;
-  margin-left: 1rem;
-  color: #314dec;
-  transition: all 0.5s;
-}
-.wrong {
-  color: rgb(0, 172, 0);
-}
-.user-answer {
+
   padding: 0.2rem 0.5rem;
   border: #fada5e 1px solid;
   background: linear-gradient(
@@ -433,11 +427,22 @@ body.dark-mode-active .dark-mode__btn::before {
     #ff3939cc 75%,
     #ff3939cc 100%
   );
-  background-size: 500%;
+  background-size: 600%;
   background-position: right;
   transition: all 1s;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.answer {
+  text-align: start !important;
+  margin-left: 1rem;
+  color: #314dec;
+  transition: all 0.5s;
+}
+.wrong {
+  color: rgb(0, 172, 0);
+}
+
 .wrong-input {
   background-position: left;
   color: #000;

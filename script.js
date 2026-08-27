@@ -5,9 +5,10 @@ const wordSections = [
     label: "english_gen",
     data: english_gen,
     name: "English General",
-    audio: true,
+    audio: false,
   },
   { label: "english_c1", data: english_c1, name: "English C1" },
+  { label: "english_graph", data: english_graph, name: "English for Graphs" },
   {
     label: "english_phrasals",
     data: english_phrasals,
@@ -57,7 +58,7 @@ wordSections.forEach((el) => {
 });
 
 function shuffle(array) {
-  return array; // if you don't want to randomize
+  // return array; // if you don't want to randomize
   let currentIndex = array.length;
   let randomIndex;
 
@@ -85,7 +86,7 @@ const orderWords = function (x, i) {
             : ""
         }
         <p class="georgian">${x[1]}</p>
-        <input type="text" spellcheck="false" class="user-answer" />
+        <textarea spellcheck="false" class="user-answer" onkeydown="if (event.key === 'Enter') event.preventDefault();"></textarea>
         <button class="show-letter">0</button>
         <p class="answer"></p>
       </div>`,
@@ -142,7 +143,7 @@ chooseLvl.addEventListener("click", function (e) {
   chooseAmount.style.display = "";
   finalBtns.style.display = "none";
   chooseAmountSelection.innerHTML = ``;
-  for (let i = 50; i < starterArr.length; i += 50) {
+  for (let i = 10; i < starterArr.length; i += 10) {
     chooseAmountSelection.insertAdjacentHTML(
       "beforeend",
       `<option value="${i}">${i}</option>`,
