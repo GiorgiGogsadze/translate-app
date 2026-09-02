@@ -439,7 +439,10 @@ body.dark-mode-active .dark-mode__btn::before {
   color: #314dec;
   transition: all 0.5s;
 }
-.wrong {
+.answer.correct {
+  color: rgb(222, 118, 0);
+}
+.answer.wrong {
   color: rgb(0, 172, 0);
 }
 

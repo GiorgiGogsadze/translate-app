@@ -5,7 +5,7 @@ const wordSections = [
     label: "english_gen",
     data: english_gen,
     name: "English General",
-    audio: false,
+    audio: true,
   },
   { label: "english_c1", data: english_c1, name: "English C1" },
   { label: "english_graph", data: english_graph, name: "English for Graphs" },
@@ -16,7 +16,7 @@ const wordSections = [
   },
   { label: "english_idioms", data: english_idioms, name: "English Idioms" },
   { label: "spanish_a1", data: spanish_a1, name: "Spanish A1" },
-  { label: "spanish_a2_1", data: spanish_a2_1, name: "Spanish A2 1" },
+  { label: "spanish_a2", data: spanish_a2, name: "Spanish A2" },
   { label: "spanish_numbers", data: spanish_numbers, name: "Spanish Numbers" },
 ];
 
@@ -75,6 +75,23 @@ function shuffle(array) {
   }
   return array;
 }
+
+const setFormattedText = function (element, text) {
+  element.textContent = "";
+
+  // Capturing group now includes the /$ symbols
+  const parts = text.split(/(\/\$.*?\/\$)/g);
+
+  parts.forEach((part) => {
+    if (part.startsWith("/$") && part.endsWith("/$")) {
+      const strong = document.createElement("strong");
+      strong.textContent = part.slice(2, -2);
+      element.appendChild(strong);
+    } else if (part) {
+      element.appendChild(document.createTextNode(part));
+    }
+  });
+};
 
 const orderWords = function (x, i) {
   wordList.insertAdjacentHTML(
@@ -205,12 +222,16 @@ wordList.addEventListener("keyup", (e) => {
           return n < i && !word.disabled;
         });
       } else if (e.keyCode === 13) {
+        let right_p = document.querySelectorAll(".answer")[i];
         if (el.value.toLowerCase().trim() === chosenLvl[i][0].toLowerCase()) {
-          document.querySelectorAll(".answer")[i].classList.add("correct");
+          right_p.classList.add("correct");
+          if (chosenLvl[i][2]) {
+            setFormattedText(right_p, chosenLvl[i][2]);
+          }
           el.classList.add("correct-input");
         } else {
-          document.querySelectorAll(".answer")[i].classList.add("wrong");
-          document.querySelectorAll(".answer")[i].textContent = chosenLvl[i][0];
+          right_p.classList.add("wrong");
+          right_p.textContent = chosenLvl[i][0];
           el.classList.add("wrong-input");
         }
 
@@ -266,6 +287,9 @@ check.addEventListener("click", (e) => {
   document.querySelectorAll(".answer").forEach((el, i) => {
     if (userAnswer[i].value.toLowerCase() === chosenLvl[i][0].toLowerCase()) {
       el.classList.add("correct");
+      if (chosenLvl[i][2]) {
+        setFormattedText(el, chosenLvl[i][2]);
+      }
       userAnswer[i].classList.add("correct-input");
     } else {
       el.classList.add("wrong");
@@ -288,12 +312,10 @@ check.addEventListener("click", (e) => {
   }
 });
 next.addEventListener("click", function () {
-  const wrongsArr = [...document.querySelectorAll(".wrong")].map((el, i) => {
-    return [
-      el.textContent,
-      el.closest("div").querySelector(".georgian").textContent,
-    ];
-  });
+  const wrong_words = [...document.querySelectorAll(".wrong")].map(
+    (el) => el.textContent,
+  );
+  const wrongsArr = chosenLvl.filter((el) => wrong_words.includes(el[0]));
   renderWords(wrongsArr);
   next.style.display = "";
 });
