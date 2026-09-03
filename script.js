@@ -8,7 +8,6 @@ const wordSections = [
     label: "english_gen",
     data: english_gen,
     name: "English General",
-    audio: true,
   },
   { label: "english_c1", data: english_c1, name: "English C1" },
   { label: "english_graph", data: english_graph, name: "English for Graphs" },
@@ -26,10 +25,6 @@ const wordSections = [
 const allWords = wordSections.reduce((acc, el) => {
   return { ...acc, [el.label]: el.data };
 }, {});
-
-const hasAudio = wordSections
-  .filter((section) => section.audio)
-  .flatMap((section) => section.data.map((pair) => pair[0]));
 
 // ==========================================
 // 2. Application State
@@ -100,8 +95,8 @@ const Utils = {
     });
   },
 
-  playAudio(word) {
-    const audio = new Audio(`audios/${word}.mp3`);
+  playAudio(link) {
+    const audio = new Audio(link);
     audio.play().catch((err) => console.warn("Audio playback failed:", err));
   },
 };
@@ -289,8 +284,8 @@ const App = {
       .map(
         (wordData, i) => `
       <div>
-        ${hasAudio.includes(wordData[0]) ? `<button class="play-word" data-word="${wordData[0]}" data-index="${i}" type="button" disabled>🔊</button>` : ""}
-        <p class="georgian">${wordData[1]}</p>
+        ${wordData.audio ? `<button class="play-word" data-audio="${wordData.audio}" data-index="${i}" type="button" disabled>🔊</button>` : ""}
+        <p class="georgian">${wordData.definition}</p>
         <textarea spellcheck="false" class="user-answer" data-index="${i}"></textarea>
         <button class="show-letter" data-index="${i}">0</button>
         <p class="answer" data-index="${i}"></p>
@@ -309,7 +304,7 @@ const App = {
     // 1. Audio Playback
     const playBtn = e.target.closest(".play-word");
     if (playBtn && !playBtn.disabled) {
-      Utils.playAudio(playBtn.dataset.word);
+      Utils.playAudio(playBtn.dataset.audio);
       return;
     }
 
@@ -317,7 +312,7 @@ const App = {
     const helpBtn = e.target.closest(".show-letter");
     if (helpBtn && !helpBtn.disabled) {
       const index = +helpBtn.dataset.index;
-      const targetWord = state.chosenLvl[index][0];
+      const targetWord = state.chosenLvl[index].word;
       const currentHelps = +helpBtn.textContent;
 
       if (targetWord.length > currentHelps) {
@@ -362,7 +357,7 @@ const App = {
 
   checkSingleAnswer(index, inputEl, shouldPlayAudio = true) {
     const wordData = state.chosenLvl[index];
-    const targetWord = wordData[0];
+    const targetWord = wordData.word;
     const answerEl = document.querySelector(`.answer[data-index="${index}"]`);
 
     inputEl.disabled = true;
@@ -374,7 +369,8 @@ const App = {
 
     if (inputEl.value.toLowerCase().trim() === targetWord.toLowerCase()) {
       answerEl.classList.add("correct");
-      if (wordData[2]) Utils.setFormattedText(answerEl, wordData[2]);
+      if (wordData.sentence)
+        Utils.setFormattedText(answerEl, wordData.sentence);
       inputEl.classList.add("correct-input");
     } else {
       answerEl.classList.add("wrong");
@@ -386,7 +382,7 @@ const App = {
     if (playBtn) {
       playBtn.disabled = false;
       if (shouldPlayAudio) {
-        Utils.playAudio(targetWord); // Only plays for single answers
+        Utils.playAudio(wordData.audio); // Only plays for single answers
       }
     }
 
@@ -435,7 +431,7 @@ const App = {
       (el) => el.textContent,
     );
     const wrongsArr = state.chosenLvl.filter((wordData) =>
-      wrongWordsTexts.includes(wordData[0]),
+      wrongWordsTexts.includes(wordData.word),
     );
 
     this.renderWords(wrongsArr);
