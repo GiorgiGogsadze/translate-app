@@ -2256,7 +2256,7 @@ const spanish_a2_2 = [
   },
   {
     word: "el cliente",
-    definition: "the client / customer",
+    definition: "the client, the customer (male)",
   },
   {
     word: "la actriz",
@@ -2264,11 +2264,11 @@ const spanish_a2_2 = [
   },
   {
     word: "la ocupación",
-    definition: "the occupation / profession",
+    definition: "the occupation, the profession",
   },
   {
     word: "pienso que deberías",
-    definition: "I think you should (informal)",
+    definition: "(I) think you should (informal singular)",
   },
   {
     word: "el conductor",
@@ -2280,7 +2280,7 @@ const spanish_a2_2 = [
   },
   {
     word: "el departamento",
-    definition: "the department / apartment",
+    definition: "the department, the apartment",
   },
   {
     word: "la impresora",
@@ -2288,19 +2288,19 @@ const spanish_a2_2 = [
   },
   {
     word: "descargar",
-    definition: "to download",
+    definition: "(to) download",
   },
   {
     word: "el personal",
-    definition: "the staff / personnel",
+    definition: "the staff, the personnel",
   },
   {
     word: "el limpiador",
-    definition: "the cleaner (person or product)",
+    definition: "the cleaner (male person), the cleaning product",
   },
   {
     word: "el pizarrón",
-    definition: "the chalkboard / whiteboard",
+    definition: "the chalkboard, the whiteboard",
   },
   {
     word: "el fotógrafo",
@@ -2312,11 +2312,11 @@ const spanish_a2_2 = [
   },
   {
     word: "copiar",
-    definition: "to copy",
+    definition: "(to) copy",
   },
   {
     word: "descargué",
-    definition: "I downloaded (past tense)",
+    definition: "(I) downloaded",
   },
   {
     word: "el piloto",
@@ -2332,7 +2332,7 @@ const spanish_a2_2 = [
   },
   {
     word: "el correo",
-    definition: "the mail / post office",
+    definition: "the mail, the postal service",
   },
   {
     word: "la física",
@@ -2352,19 +2352,19 @@ const spanish_a2_2 = [
   },
   {
     word: "el perfume",
-    definition: "the perfume / scent",
+    definition: "the perfume, the scent",
   },
   {
-    word: "compren",
-    definition: "buy! (plural command)",
+    word: "comprad",
+    definition: "buy! (vosotros command)",
   },
   {
-    word: "trabajen",
-    definition: "work! (plural command)",
+    word: "trabajad",
+    definition: "work! (vosotros command)",
   },
   {
     word: "me lo llevo",
-    definition: "I'll take it (when buying something)",
+    definition: "(I)'ll take it (when buying something)",
   },
   {
     word: "el recibo",
@@ -2372,19 +2372,19 @@ const spanish_a2_2 = [
   },
   {
     word: "el vendedor",
-    definition: "the salesman / seller",
+    definition: "the salesman, the seller",
   },
   {
-    word: "beban",
-    definition: "drink! (plural command)",
+    word: "bebed",
+    definition: "drink! (vosotros command)",
   },
   {
-    word: "coman",
-    definition: "eat! (plural command)",
+    word: "comed",
+    definition: "eat! (vosotros command)",
   },
   {
     word: "el brazalete",
-    definition: "the bracelet / wristband",
+    definition: "the bracelet, the wristband",
   },
   {
     word: "el arete",
@@ -2392,15 +2392,15 @@ const spanish_a2_2 = [
   },
   {
     word: "deciden",
-    definition: "they decide / you all decide (present tense)",
+    definition: "(they) decide, (you all) decide (present tense)",
   },
   {
-    word: "abran",
-    definition: "open! (plural command)",
+    word: "abrid",
+    definition: "open! (vosotros command)",
   },
   {
-    word: "decidan",
-    definition: "decide! (plural command)",
+    word: "decidid",
+    definition: "decide! (vosotros command)",
   },
   {
     word: "cuál quiere",
@@ -2411,8 +2411,8 @@ const spanish_a2_2 = [
     definition: "the pajamas",
   },
   {
-    word: "hagan",
-    definition: "do! / make! (plural command)",
+    word: "haced",
+    definition: "do!, make! (vosotros command)",
   },
   {
     word: "gratis",
@@ -2420,12 +2420,400 @@ const spanish_a2_2 = [
   },
   {
     word: "hacen",
-    definition: "they do / they make (present tense)",
+    definition:
+      "(they) do, (they) make, (you all) do, (you all) make (present tense)",
   },
   {
-    word: "vayan",
-    definition: "go! (plural command)",
+    word: "id",
+    definition: "go! (vosotros command)",
+  },
+  {
+    word: "el vendaje",
+    definition: "the bandage, the dressing",
+  },
+  {
+    word: "horrible",
+    definition: "horrible, awful",
+  },
+  {
+    word: "el cerebro",
+    definition: "the brain",
+  },
+  {
+    word: "molesto",
+    definition:
+      "annoying (masc.), bothersome (masc.), annoyed (masc.), (I) bother",
+  },
+  {
+    word: "usual",
+    definition: "usual, normal",
+  },
+  {
+    word: "alejado",
+    definition: "far away (masc.), distant (masc.), remote (masc.)",
+  },
+  {
+    word: "nacer",
+    definition: "(to) be born",
+  },
+  {
+    word: "gravemente",
+    definition: "seriously, severely",
+  },
+  {
+    word: "fácilmente",
+    definition: "easily",
+  },
+  {
+    word: "el auxilio",
+    definition: "the help, the assistance",
+  },
+  {
+    word: "rápidamente",
+    definition: "quickly",
+  },
+  {
+    word: "muerto",
+    definition: "dead (masc.), deceased (masc.)",
+  },
+  {
+    word: "me veo",
+    definition: "(I) see myself, (I) look",
+  },
+  {
+    word: "en forma",
+    definition: "fit, in shape",
+  },
+  {
+    word: "comer mucho",
+    definition: "(to) eat a lot",
+  },
+  {
+    word: "trabajar mucho",
+    definition: "(to) work a lot",
+  },
+  {
+    word: "el pelo",
+    definition: "the hair",
+  },
+  {
+    word: "cuidado",
+    definition: "careful!, take care",
+  },
+  {
+    word: "la sangre",
+    definition: "the blood",
+  },
+  {
+    word: "me olvido",
+    definition: "(I) forget",
+  },
+  {
+    word: "el cambio",
+    definition: "the change, the exchange",
+  },
+  {
+    word: "inmediatamente",
+    definition: "immediately",
+  },
+  {
+    word: "el patín",
+    definition: "the skate",
+  },
+  {
+    word: "el ama de casa",
+    definition: "the housewife, the homemaker",
+  },
+  {
+    word: "castaño",
+    definition: "brown (masc.), chestnut-colored (masc.)",
+  },
+  {
+    word: "casi",
+    definition: "almost",
+  },
+  {
+    word: "veías",
+    definition: "(you) used to see, (you) were seeing (informal singular)",
+  },
+  {
+    word: "veía",
+    definition: "(I/he/she) used to see, (I/he/she) was seeing",
+  },
+  {
+    word: "el globo",
+    definition: "the balloon, the globe",
+  },
+  {
+    word: "liso",
+    definition: "smooth (masc.), straight (masc., hair), plain (masc.)",
+  },
+  {
+    word: "la batería",
+    definition: "the battery, the drum kit",
+  },
+  {
+    word: "patinar",
+    definition: "(to) skate",
+  },
+  {
+    word: "el escúter",
+    definition: "the scooter",
+  },
+  {
+    word: "el payaso",
+    definition: "the clown (male)",
+  },
+  {
+    word: "el/la adolescente",
+    definition: "the teenager, the adolescent",
+  },
+  {
+    word: "veían",
+    definition:
+      "(they) used to see, (they) were seeing, (you all) used to see, (you all) were seeing",
+  },
+  {
+    word: "compartir",
+    definition: "(to) share",
+  },
+  {
+    word: "veíamos",
+    definition: "(we) used to see, (we) were seeing",
+  },
+  {
+    word: "el fútbol americano",
+    definition: "the American football",
+  },
+  {
+    word: "el armario",
+    definition: "the wardrobe, the closet, the cupboard",
+  },
+  {
+    word: "la zanahoria",
+    definition: "the carrot",
+  },
+  {
+    word: "el póster",
+    definition: "the poster",
+  },
+  {
+    word: "mientras",
+    definition: "while",
+  },
+  {
+    word: "había",
+    definition: "there was, there were, (I/he/she) had",
+  },
+  {
+    word: "la avenida",
+    definition: "the avenue, the boulevard",
+  },
+  {
+    word: "el mapa",
+    definition: "the map",
+  },
+  {
+    word: "la autopista",
+    definition: "the freeway, the highway, the motorway",
+  },
+  {
+    word: "el euro",
+    definition: "the euro",
+  },
+  {
+    word: "me voy",
+    definition: "(I)'m leaving, (I)'m going away",
+  },
+  {
+    word: "te vas",
+    definition: "(you)'re leaving, (you)'re going away (informal singular)",
+  },
+  {
+    word: "la gasolina",
+    definition: "the gasoline, the petrol",
+  },
+  {
+    word: "cálido",
+    definition: "warm (masc.)",
+  },
+  {
+    word: "profundo",
+    definition: "deep (masc.), profound (masc.)",
+  },
+  {
+    word: "alrededor del",
+    definition: "around the",
+  },
+  {
+    word: "se van",
+    definition:
+      "(they) leave, (they) are leaving, (you all) leave, (you all) are leaving",
+  },
+  {
+    word: "así que",
+    definition: "so, therefore",
+  },
+  {
+    word: "sería una buena idea",
+    definition: "it would be a good idea",
+  },
+  {
+    word: "se va",
+    definition:
+      "(he/she) leaves, (he/she) is leaving, (you) leave, (you) are leaving (formal)",
+  },
+  {
+    word: "ahorrar",
+    definition: "(to) save (money or resources)",
+  },
+  {
+    word: "el resto",
+    definition: "the rest, the remainder",
+  },
+  {
+    word: "el club",
+    definition: "the club",
+  },
+  {
+    word: "empacar",
+    definition: "(to) pack",
+  },
+  {
+    word: "la reservación",
+    definition: "the reservation, the booking",
+  },
+  {
+    word: "alquilar",
+    definition: "(to) rent",
+  },
+  {
+    word: "nos vamos",
+    definition: "(we) are leaving, (we) are going away",
+  },
+  {
+    word: "la guía",
+    definition: "the guidebook, the guide (female)",
+  },
+  {
+    word: "encantaría",
+    definition: "would love (it)",
+  },
+  {
+    word: "encantarían",
+    definition: "would love (them)",
+  },
+  {
+    word: "empaqué",
+    definition: "(I) packed",
+  },
+  {
+    word: "soñamos",
+    definition: "(we) dream, (we) dreamed",
+  },
+  {
+    word: "el techo",
+    definition: "the roof, the ceiling",
+  },
+  {
+    word: "acaban de",
+    definition: "(they) have just",
+  },
+  {
+    word: "el estante",
+    definition: "the shelf, the bookshelf",
+  },
+  {
+    word: "cancelar",
+    definition: "(to) cancel",
+  },
+  {
+    word: "vestir",
+    definition: "(to) decorate",
+  },
+  {
+    word: "terminar",
+    definition: "(to) finish, end",
+  },
+  {
+    word: "el ventilador",
+    definition: "the ventilator, the air vent, the fan",
+  },
+  {
+    word: "la tortilla",
+    definition: "the omelet, the tortilla",
+  },
+  {
+    word: "el garaje",
+    definition: "the garage",
+  },
+  {
+    word: "secar",
+    definition: "(to) dry",
+  },
+  {
+    word: "sequé",
+    definition: "(I) dried",
+  },
+  {
+    word: "recién",
+    definition: "just, recently",
+  },
+  {
+    word: "el lavamanos",
+    definition: "the bathroom sink",
+  },
+  {
+    word: "la joya",
+    definition: "the jewel",
+  },
+  {
+    word: "el melón",
+    definition: "the melon",
+  },
+  {
+    word: "rosado",
+    definition: "pink (masc.)",
+  },
+  {
+    word: "la cortina",
+    definition: "the curtain",
+  },
+  {
+    word: "el bol",
+    definition: "the bowl",
+  },
+  {
+    word: "hablar de",
+    definition: "talk about",
+  },
+  {
+    word: "práctico",
+    definition: "practical (masc.)",
+  },
+  {
+    word: "el fregadero",
+    definition: "the kitchen sink",
+  },
+  {
+    word: "vender",
+    definition: "(to) sell",
+  },
+  {
+    word: "el pasillo",
+    definition: "the hallway, the hall",
+  },
+  {
+    word: "el portón",
+    definition: "the gate",
+  },
+  {
+    word: "gritar",
+    definition: "(to) shout, cry",
   },
 ];
 
-const spanish_a2 = [...spanish_a2_1, ...spanish_a2_2];
+const spanish_a2 = [
+  // ...spanish_a2_1,
+  ...spanish_a2_2,
+];

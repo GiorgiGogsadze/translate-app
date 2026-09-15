@@ -5,21 +5,41 @@
 // ==========================================
 const wordSections = [
   {
-    label: "english_gen",
-    data: english_gen,
-    name: "English General",
+    label: "english_c1",
+    data: english_c1,
+    name: "English C1",
+    language: "english",
   },
-  { label: "english_c1", data: english_c1, name: "English C1" },
-  { label: "english_graph", data: english_graph, name: "English for Graphs" },
   {
     label: "english_phrasals",
     data: english_phrasals,
     name: "English Phrasals",
+    language: "english",
   },
-  { label: "english_idioms", data: english_idioms, name: "English Idioms" },
-  { label: "spanish_a1", data: spanish_a1, name: "Spanish A1" },
-  { label: "spanish_a2", data: spanish_a2, name: "Spanish A2" },
-  { label: "spanish_numbers", data: spanish_numbers, name: "Spanish Numbers" },
+  {
+    label: "english_idioms",
+    data: english_idioms,
+    name: "English Idioms",
+    language: "english",
+  },
+  {
+    label: "spanish_a1",
+    data: spanish_a1,
+    name: "Spanish A1",
+    language: "spanish",
+  },
+  {
+    label: "spanish_a2",
+    data: spanish_a2,
+    name: "Spanish A2",
+    language: "spanish",
+  },
+  {
+    label: "spanish_numbers",
+    data: spanish_numbers,
+    name: "Spanish Numbers",
+    language: "spanish",
+  },
 ];
 
 const allWords = wordSections.reduce((acc, el) => {
@@ -36,19 +56,25 @@ const state = {
   chosenLvl: [], // The specific randomized batch being practiced
   helpNeeded: 0, // Total letter hints used
   inputs: [], // Array of active DOM textareas
+  autoAudio: true,
 };
 
 // ==========================================
 // 3. DOM Elements Cache
 // ==========================================
 const DOM = {
+  siteTitle: document.querySelector(".site-title"),
   chooseLvl: document.querySelector(".choose-buttons"),
   chooseAmount: document.querySelector(".choose-amount"),
   customSelectWrapper: document.querySelector(".custom-select-wrapper"),
   customSelectTrigger: document.querySelector(".custom-select-trigger"),
   customSelectText: document.querySelector(".custom-select-text"),
   customSelectOptions: document.querySelector(".custom-select-options"),
-  finalBtns: document.querySelector(".final-buttons"),
+  batchSelectContainer: document.querySelector(".batch-select-container"),
+  batchSelectWrapper: document.querySelector(".batch-select-wrapper"),
+  batchSelectTrigger: document.querySelector(".batch-select-trigger"),
+  batchSelectText: document.querySelector(".batch-select-text"),
+  batchSelectOptions: document.querySelector(".batch-select-options"),
   currentSelectionText: document.querySelector(".chosen-level"),
   wordList: document.querySelector(".wordList"),
   lastBtns: document.querySelector(".btn-container"),
@@ -56,6 +82,7 @@ const DOM = {
   nextBtn: document.querySelector(".next"),
   info: document.querySelector(".info-popup__content"),
   infoContainer: document.querySelector(".info-container"),
+  audioToggle: document.querySelector(".audio-toggle"),
   darkModeBtn: document.querySelector(".dark-mode"),
   instructionBtn: document.querySelector(".instruction"),
   instructionContainer: document.querySelector(".instruction-container"),
@@ -106,24 +133,71 @@ const Utils = {
 // ==========================================
 const App = {
   init() {
-    this.renderLevelButtons();
+    this.renderLanguageButtons();
     this.bindEvents();
   },
 
-  renderLevelButtons() {
-    DOM.chooseLvl.innerHTML = wordSections
+  renderLanguageButtons() {
+    DOM.chooseLvl.innerHTML = `
+    <button class="language-btn" data-language="english">
+      English
+    </button>
+
+    <button class="language-btn" data-language="spanish">
+      Spanish
+    </button>
+  `;
+  },
+
+  renderLevelButtons(language) {
+    const sections = wordSections.filter(
+      (section) => section.language === language,
+    );
+
+    DOM.chooseLvl.innerHTML = `
+    <button class="back-language-btn">← Back</button>
+
+    ${sections
       .map(
-        (el) =>
-          `<button class="lvl-btn" data-arr="${el.label}">${el.name}</button>`,
+        (section) => `
+          <button
+            class="lvl-btn"
+            data-arr="${section.label}"
+          >
+            ${section.name}
+          </button>
+        `,
       )
-      .join("");
+      .join("")}
+  `;
   },
 
   bindEvents() {
+    DOM.siteTitle.addEventListener("click", () => {
+      this.resetSelectionUI();
+      this.renderLanguageButtons();
+    });
     // Menu Selections
-    DOM.chooseLvl.addEventListener("click", (e) =>
-      this.handleLevelSelection(e),
-    );
+    DOM.chooseLvl.addEventListener("click", (e) => {
+      const languageBtn = e.target.closest(".language-btn");
+      const levelBtn = e.target.closest(".lvl-btn");
+      const backBtn = e.target.closest(".back-language-btn");
+
+      if (languageBtn) {
+        this.renderLevelButtons(languageBtn.dataset.language);
+        return;
+      }
+
+      if (backBtn) {
+        this.resetSelectionUI();
+        this.renderLanguageButtons();
+        return;
+      }
+
+      if (levelBtn) {
+        this.handleLevelSelection(e);
+      }
+    });
     // Custom Dropdown Logic
     DOM.customSelectTrigger.addEventListener("click", () => {
       DOM.customSelectOptions.classList.toggle("open");
@@ -134,13 +208,16 @@ const App = {
       if (!e.target.closest(".custom-select-wrapper")) {
         DOM.customSelectOptions.classList.remove("open");
         DOM.customSelectWrapper.classList.remove("open");
+
+        DOM.batchSelectOptions.classList.remove("open");
+        DOM.batchSelectWrapper.classList.remove("open");
       }
     });
 
     DOM.customSelectOptions.addEventListener("click", (e) =>
       this.handleCustomAmountSelection(e),
     );
-    DOM.finalBtns.addEventListener("click", (e) =>
+    DOM.batchSelectOptions.addEventListener("click", (e) =>
       this.handleBatchSelection(e),
     );
 
@@ -155,6 +232,12 @@ const App = {
     DOM.nextBtn.addEventListener("click", () => this.loadNextWrongWords());
 
     // UI & Modals
+    DOM.audioToggle.addEventListener("click", () => {
+      state.autoAudio = !state.autoAudio;
+
+      DOM.audioToggle.textContent = state.autoAudio ? "🔊" : "🔇";
+      DOM.audioToggle.setAttribute("aria-pressed", state.autoAudio);
+    });
     DOM.darkModeBtn.addEventListener("click", () =>
       document.body.classList.toggle("dark-mode-active"),
     );
@@ -181,6 +264,27 @@ const App = {
         DOM.popupContainers.forEach((c) => (c.style.display = "none"));
       }
     });
+
+    DOM.batchSelectTrigger.addEventListener("click", () => {
+      DOM.batchSelectOptions.classList.toggle("open");
+      DOM.batchSelectWrapper.classList.toggle("open");
+    });
+  },
+
+  resetSelectionUI() {
+    DOM.chooseAmount.style.display = "none";
+    DOM.batchSelectContainer.style.display = "none";
+    DOM.batchSelectText.textContent = "Choose";
+    DOM.wordList.style.display = "none";
+    DOM.lastBtns.style.display = "none";
+    DOM.currentSelectionText.style.display = "none";
+
+    state.starterArr = [];
+    state.curLvlName = "";
+    state.amountWords = 0;
+    state.chosenLvl = [];
+
+    DOM.customSelectText.textContent = "Choose";
   },
 
   handleLevelSelection(e) {
@@ -196,7 +300,9 @@ const App = {
     DOM.wordList.style.display = "none";
     DOM.lastBtns.style.display = "none";
     DOM.currentSelectionText.style.display = "none";
-    DOM.finalBtns.style.display = "none";
+    DOM.batchSelectContainer.style.display = "none";
+    DOM.batchSelectText.textContent = "Choose";
+    DOM.chooseAmount.style.display = "none";
 
     // Update State
     state.starterArr = allWords[btn.dataset.arr] || [];
@@ -233,27 +339,43 @@ const App = {
     DOM.customSelectWrapper.classList.remove("open");
 
     // Render final buttons
-    const amountBtns = Math.ceil(state.starterArr.length / state.amountWords);
-    DOM.finalBtns.style.display = "";
+    const amountBatches = Math.ceil(
+      state.starterArr.length / state.amountWords,
+    );
 
-    let btnsHTML = "";
-    for (let i = 1; i <= amountBtns; i++) {
-      btnsHTML += `<button class="fin-btn" role="button" data-n="${i}"><span class="text">${state.curLvlName} ${i}</span></button>`;
+    DOM.batchSelectContainer.style.display = "";
+
+    let optionsHTML = "";
+
+    for (let i = 1; i <= amountBatches; i++) {
+      const start = (i - 1) * state.amountWords + 1;
+
+      const end = Math.min(i * state.amountWords, state.starterArr.length);
+
+      optionsHTML += `
+    <div class="custom-option" data-value="${i}">
+      ${start} - ${end}
+    </div>
+  `;
     }
-    DOM.finalBtns.innerHTML = btnsHTML;
+
+    DOM.batchSelectOptions.innerHTML = optionsHTML;
+    DOM.batchSelectText.textContent = "Choose";
   },
 
   handleBatchSelection(e) {
-    const btn = e.target.closest(".fin-btn");
-    if (!btn) return;
+    const option = e.target.closest(".custom-option");
+    if (!option) return;
 
-    document
-      .querySelectorAll(".fin-btn")
-      .forEach((el) => el.classList.remove("fin-btn-active"));
-    btn.classList.add("fin-btn-active");
+    const number = +option.dataset.value;
 
-    const number = +btn.dataset.n;
+    DOM.batchSelectText.textContent = option.textContent.trim();
+
+    DOM.batchSelectOptions.classList.remove("open");
+    DOM.batchSelectWrapper.classList.remove("open");
+
     const startPoint = (number - 1) * state.amountWords;
+
     const endPoint = Math.min(
       number * state.amountWords,
       state.starterArr.length,
@@ -262,6 +384,7 @@ const App = {
     const batch = state.starterArr.slice(startPoint, endPoint);
 
     DOM.currentSelectionText.style.display = "block";
+
     DOM.currentSelectionText.textContent = `${state.curLvlName} Words ${startPoint + 1} - ${endPoint}`;
 
     this.renderWords(batch);
@@ -381,8 +504,8 @@ const App = {
     const playBtn = document.querySelector(`.play-word[data-index="${index}"]`);
     if (playBtn) {
       playBtn.disabled = false;
-      if (shouldPlayAudio) {
-        Utils.playAudio(wordData.audio); // Only plays for single answers
+      if (shouldPlayAudio && state.autoAudio && wordData.audio) {
+        Utils.playAudio(wordData.audio);
       }
     }
 
