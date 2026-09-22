@@ -2811,6 +2811,182 @@ const spanish_a2_2 = [
     word: "gritar",
     definition: "(to) shout, cry",
   },
+  {
+    word: "claro",
+    definition: "it's clear, obviously",
+  },
+  {
+    word: "enterarse",
+    definition: "(to) find out",
+  },
+  {
+    word: "e",
+    definition: "and (before i sound)",
+  },
+  {
+    word: "di",
+    definition: "(I) gave",
+  },
+  {
+    word: "diste",
+    definition: "(you) gave",
+  },
+  {
+    word: "el contacto",
+    definition: "the contact",
+  },
+  {
+    word: "quieres decir",
+    definition: "(you) want to say, (you) mean",
+  },
+  {
+    word: "el formulario",
+    definition: "the form",
+  },
+  {
+    word: "la salida",
+    definition: "the exit",
+  },
+  {
+    word: "quería decir",
+    definition: "(I/he) meant",
+  },
+  {
+    word: "dio",
+    definition: "(he) gave",
+  },
+  {
+    word: "digital",
+    definition: "digital",
+  },
+  {
+    word: "el asunto",
+    definition: "the matter, the issue",
+  },
+  {
+    word: "enterar",
+    definition: "inform",
+  },
+  {
+    word: "la web",
+    definition: "the web",
+  },
+  {
+    word: "dieron",
+    definition: "(they) gave",
+  },
+  {
+    word: "dimos",
+    definition: "(we) gave",
+  },
+  {
+    word: "añadir",
+    definition: "(to) add",
+  },
+  {
+    word: "el hecho",
+    definition: "the fact",
+  },
+  {
+    word: "suceder",
+    definition: "(to) happen",
+  },
+  {
+    word: "el software",
+    definition: "the software",
+  },
+  {
+    word: "la multitud",
+    definition: "the crowd",
+  },
+  {
+    word: "comprado",
+    definition: "purchased, bought",
+  },
+  {
+    word: "pedido",
+    definition: "ordered, asked, requested",
+  },
+  {
+    word: "tal",
+    definition: "such a",
+  },
+  {
+    word: "conocido",
+    definition: "met",
+  },
+  {
+    word: "tenido",
+    definition: "gotten, had",
+  },
+  {
+    word: "tales",
+    definition: "such",
+  },
+  {
+    word: "el negativo",
+    definition: "the negative",
+  },
+  {
+    word: "surfear",
+    definition: "(to) surf",
+  },
+  {
+    word: "la señal",
+    definition: "the sign, signal",
+  },
+  {
+    word: "cualquier lugar",
+    definition: "anywhere",
+  },
+  {
+    word: "dicho",
+    definition: "said, told",
+  },
+  {
+    word: "el sonido",
+    definition: "the sound",
+  },
+  {
+    word: "la ruta",
+    definition: "the road, route, track",
+  },
+  {
+    word: "escrito",
+    definition: "written",
+  },
+  {
+    word: "por cierto",
+    definition: "by the way",
+  },
+  {
+    word: "la meta",
+    definition: "the goal",
+  },
+  {
+    word: "la luna",
+    definition: "the moon",
+  },
+  {
+    word: "la estrella",
+    definition: "the star",
+  },
+  {
+    word: "el semestre",
+    definition: "the semester",
+  },
+  {
+    word: "ocurrido",
+    definition: "happened",
+  },
+  {
+    word: "visto",
+    definition: "watched, seen",
+  },
+  {
+    word: "la biología",
+    definition: "the biology",
+  },
 ];
 
 const spanish_a2 = [
