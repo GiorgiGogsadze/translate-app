@@ -2773,7 +2773,7 @@ const spanish_a2_2 = [
   },
   {
     word: "rosado",
-    definition: "pink (masc.)",
+    definition: "pinkish (masc.)",
   },
   {
     word: "la cortina",
@@ -2986,6 +2986,102 @@ const spanish_a2_2 = [
   {
     word: "la biología",
     definition: "the biology",
+  },
+  {
+    word: "el hermanito",
+    definition: "the little brother",
+  },
+  {
+    word: "me llevo bien",
+    definition: "(I) get along well",
+  },
+  {
+    word: "el perrito",
+    definition: "the little dog, doggie, puppy",
+  },
+  {
+    word: "soltero",
+    definition: "single (masc.)",
+  },
+  {
+    word: "te casas",
+    definition: "you get married",
+  },
+  {
+    word: "llevarse bien",
+    definition: "get along well",
+  },
+  {
+    word: "normal",
+    definition: "normal",
+  },
+  {
+    word: "la jalea",
+    definition: "the jelly",
+  },
+  {
+    word: "la mesita",
+    definition: "the little table",
+  },
+  {
+    word: "el gatito",
+    definition: "the  little cat, kitten",
+  },
+  {
+    word: "el ratón",
+    definition: "the mouse",
+  },
+  {
+    word: "aconsejar",
+    definition: "(to) advise",
+  },
+  {
+    word: "pequeñito",
+    definition: "really small (masc.)",
+  },
+  {
+    word: "graduado",
+    definition: "graduated (masc.)",
+  },
+  {
+    word: "bajito",
+    definition: "short (masc.)",
+  },
+  {
+    word: "igual",
+    definition: "same",
+  },
+  {
+    word: "el miembro",
+    definition: "the member",
+  },
+  {
+    word: "crecer",
+    definition: "(to) grow",
+  },
+  {
+    word: "la manta",
+    definition: "the blanket",
+  },
+  {
+    word: "poquito",
+    definition: "little bit",
+  },
+  {
+    word: "rosa",
+    definition: "pink",
+  },
+  {
+    word: "pesca",
+    definition: "fishing",
+  },
+  {
+    word: "los abuelitos",
+    definition: "the (beloved) grandparents",
+  },
+  {
+    word: "el bistec",
+    definition: "the steak",
   },
 ];
 
